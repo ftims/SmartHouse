@@ -1,5 +1,7 @@
 package app;
 
+import java.util.Collections;
+
 import model.WeatherSignal;
 import model.WeatherState;
 
@@ -13,9 +15,11 @@ public class Main {
 			randomGeneratedWeatherSignal.getWeatherStates().add(
 					randomGeneratedWeatherState);
 		}
-		WeatherGenerator.saveToFileGeneratedData(randomGeneratedWeatherSignal,
+		Collections.sort(randomGeneratedWeatherSignal.getWeatherStates());
+		WeatherGenerator.saveToFileWeatherSignal(randomGeneratedWeatherSignal,
 				"random.csv", ',');
 
+		@SuppressWarnings("unused")
 		WeatherSignal ws = WeatherGenerator.loadWeatherDataFromCSVFile(
 				"random.csv", ',');
 

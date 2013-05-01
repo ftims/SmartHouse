@@ -34,7 +34,7 @@ public class WeatherGenerator {
 		double humidity = getRandomNumberFrom(0, 100);
 		double temperature = getRandomNumberFrom(-50, 50);
 
-		int year = getRandomNumberFrom(1990, 2012);
+		int year = getRandomNumberFrom(2011, 2012);
 		int monthOfYear = getRandomNumberFrom(1, 12);
 		int dayOfMonth = getRandomNumberFrom(1, 29);
 		int hourOfDay = getRandomNumberFrom(0, 23);
@@ -103,7 +103,7 @@ public class WeatherGenerator {
 		return weatherData;
 	}
 
-	public static void saveToFileGeneratedData(WeatherSignal weatherSignal,
+	public static void saveToFileWeatherSignal(WeatherSignal weatherSignal,
 			String path, char separator) {
 		Collections.sort(weatherSignal.getWeatherStates());
 		try {
