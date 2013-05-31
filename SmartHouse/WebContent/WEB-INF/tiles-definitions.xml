@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<definition name="template-main" template="/WEB-INF/jsp/layouts/main.jsp">
+		<put-attribute name="banner-content" value="/WEB-INF/jsp/sections/banner.jsp" />
+		<put-attribute name="title-content" value="" />
+		<put-attribute name="primary-content" value="" />
+		<put-attribute name="sidebar-content" value="/WEB-INF/jsp/sections/sidebar.jsp" />
+		<put-attribute name="footer-content" value="/WEB-INF/jsp/sections/footer.jsp" />
+	</definition>
+
+
+	<definition name="home-tiles" extends="template-main">
+		<put-attribute name="primary-content" value="/WEB-INF/jsp/contents/home.jsp" />
+	</definition>
+
+	<definition name="data-tiles" extends="template-main">
+		<put-attribute name="primary-content" value="/WEB-INF/jsp/contents/data.jsp" />
+	</definition>
+
+	<definition name="static-tiles" extends="template-main">
+		<put-attribute name="primary-content"
+			value="/WEB-INF/jsp/contents/static_chart.jsp" />
+	</definition>
+	<definition name="info-tiles" extends="template-main">
+		<put-attribute name="primary-content" value="/WEB-INF/jsp/contents/info.jsp" />
+	</definition>
+
+
+</tiles-definitions>
