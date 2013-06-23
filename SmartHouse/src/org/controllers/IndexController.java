@@ -70,12 +70,34 @@ public class IndexController {
 		String component = request.getParameter("component");
 		String type = request.getParameter("type");
 
-		
-//		aby wygenerowac dane losowe wykonujemy main z klasy Main a nastepnie zawartosc wygenerowanego pliku kopiujemy do pliku random_weather_data w folderze weather_data
+		// aby wygenerowac dane losowe wykonujemy main z klasy Main a nastepnie
+		// zawartosc wygenerowanego pliku kopiujemy do pliku random_weather_data
+		// w folderze weather_data
 		WeatherSignal allWeatherSignal = WeatherGenerator
 				.loadWeatherDataFromCSVFile(request.getSession()
 						.getServletContext().getRealPath("/")
-						+ "/weather_data/real_weather_data_2010.csv", ','); /* mozna uzyc pliku random_weather_data_2010.csv ale wykresy wtedy sa do siebie podobne i nie ma w nich nic ciekawego*/
+						+ "/weather_data/real_weather_data_2010.csv", ','); /*
+																			 * mozna
+																			 * uzyc
+																			 * pliku
+																			 * random_weather_data_2010
+																			 * .
+																			 * csv
+																			 * ale
+																			 * wykresy
+																			 * wtedy
+																			 * sa
+																			 * do
+																			 * siebie
+																			 * podobne
+																			 * i
+																			 * nie
+																			 * ma
+																			 * w
+																			 * nich
+																			 * nic
+																			 * ciekawego
+																			 */
 
 		DateTime dataPoczatkowa = new DateTime(2010, 1, 1, 0, 0, 0);
 		DateTime dataKoncowa = new DateTime(2010, 1, 8, 0, 0, 0);
@@ -177,29 +199,21 @@ public class IndexController {
 
 	private String getNameOfComponent(String name) {
 		String label = "";
-		switch (name) {
-		case "temperature":
+		if (name.equals("temperature"))
 			label = "Temperature";
-			break;
-		case "insolation":
+		else if (name.equals("insolation"))
 			label = "Insolation";
-			break;
-		case "humidity":
+		else if (name.equals("humidity"))
 			label = "Humidity";
-			break;
-		case "wind_speed":
+		else if (name.equals("wind_speed"))
 			label = "Wind speed";
-			break;
-		case "wind_direction":
+		else if (name.equals("wind_direction"))
 			label = "Wind direction";
-			break;
-		case "pressure":
+		else if (name.equals("pressure"))
 			label = "Pressure";
-			break;
-		default:
+		else if (name.equals(""))
 			label = "";
-			break;
-		}
+
 		return label;
 	}
 
@@ -238,29 +252,20 @@ public class IndexController {
 			throws JSONException {
 		JSONObject jsonObj = new JSONObject();
 
-		switch (nameParameter) {
-		case "temperature":
+		if (nameParameter.equals("temperature"))
 			jsonObj.put("v", wst.getTemperature());
-			break;
-		case "insolation":
+		else if (nameParameter.equals("insolation"))
 			jsonObj.put("v", wst.getInsolation());
-			break;
-		case "humidity":
+		else if (nameParameter.equals("humidity"))
 			jsonObj.put("v", wst.getHumidity());
-			break;
-		case "wind_speed":
+		else if (nameParameter.equals("wind_speed"))
 			jsonObj.put("v", wst.getWindSpeed());
-			break;
-		case "wind_direction":
+		else if (nameParameter.equals("wind_direction"))
 			jsonObj.put("v", wst.getWindDirection());
-			break;
-		case "pressure":
+		else if (nameParameter.equals("pressure"))
 			jsonObj.put("v", wst.getPressure());
-			break;
-		default:
+		else if (nameParameter.equals(""))
 			jsonObj.put("v", "");
-			break;
-		}
 
 		return jsonObj;
 	}
